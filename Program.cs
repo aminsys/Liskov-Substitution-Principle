@@ -10,10 +10,15 @@ namespace Liskov_Substitution_Principle
 
             shapes.Add(new CircleLiskov(10));
             shapes.Add(new SquareLiskov(4));
-            // shapes.Add(new LineNotLiskov());
-            foreach (Shape shape in shapes)
+            shapes.Add(new LineLiskov(103));
+            foreach (TwoDimensionalShape shape in shapes.Where(x => x is TwoDimensionalShape))
             {
-                Console.WriteLine("Area: {0}", shape.GetArea());
+                Console.WriteLine("Area of {0}: {1}", shape.Type, shape.GetArea());
+            }
+            
+            foreach (OneDimensionalShape shape in shapes.Where(x => x is OneDimensionalShape))
+            {
+                Console.WriteLine("Length of {0}: {1}", shape.Type, shape.GetLength());
             }
         }
     }
